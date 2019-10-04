@@ -1,0 +1,34 @@
+<-DOCTYPE html>
+<html>
+  <head>	
+    <script src="aframe/examples/vendor/aframe/build/aframe.min.js"></script>
+	<script src="aframe/build/aframe-ar.min.js"></script>	
+	<script src="js/aframe-extras.min.js"></script> <!--necesario para visualizar el video-->
+</head>
+
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+     <!--position ="x z y"-->
+    <a-scene ar>            
+        <a-assets>
+		   <a-video id="deltaEbre" src="video/deltaEbre_53_anys.mp4" preload="auto" ></a-video> 
+		
+           <a-asset-item id="sentinelDeca-obj" src="models/sentinelDeca.obj"></a-asset-item>
+           <a-asset-item id="sentinelDeca-mtl" src="models/sentinelDeca.mtl"></a-asset-item>
+           <a-mixin id="propertiesSD" scale=".2 .2 .2" position ="0 0 0" rotation="0 0 0"></a-mixin>	   
+        </a-assets>
+        
+				
+		<a-marker type="pattern" preset="custom" url="data/letterA.patt">
+  		   <a-entity mixin="propertiesSD" obj-model="obj: #sentinelDeca-obj; mtl: #sentinelDeca-mtl "></a-entity> 
+		</a-marker>
+
+		<a-marker type="pattern" preset="custom" url="data/letterB.patt">
+  		   <a-entity geometry="primitive: plane" scale="6 4 1" position="0 0 0" rotation="-45 0 0" material="src: #deltaEbre"></a-entity> 
+		</a-marker>
+				
+  	    <a-entity camera></a-entity>
+
+	</a-scene ar>
+	
+</body>
+</html>
